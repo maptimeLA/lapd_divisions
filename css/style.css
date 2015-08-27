@@ -15,16 +15,19 @@ body { margin: 0; padding: 0;}
         width: 20%;
 }
 .text-labels {
+    pointer-events: none;
     font-size: 3em;
     font-weight: 700;
-    color: #009FFF;
+    color: white;
             /* Use color, background, set margins for offset, etc */
         }
 
 .text-cararea {
-    font-size: 2em;
+    pointer-events: none;
+    font-size: 1.5em;
+    text-align: center;
     font-weight: 100;
-    color: #009FFF;
+    color: white;
             /* Use color, background, set margins for offset, etc */
         }
 
