@@ -1,4 +1,4 @@
-## LAPD Community Map
+## LAPD Senior Lead Officer Contact Map
 Simple Map for residents to contact LAPD Division Senior Lead Officers in their neighborhood
 
 ## What is this project?
