@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LAPD Community Map</title>
+	<meta charset="utf-8" />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/leaflet.label.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/leaflet.label.css" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+</head>
+<body>
+	<div id="map"></div>
+    <div id="info"><h1>LAPD Community Map</h1><div id="infobox"><h2>A map to bring the public and the police as a community</h2></div> 
+    </div>
+	<script>
+        //Code to add Basemaps
+      
+        var streets =  L.tileLayer('https://{s}.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY3J1emluNzN2dyIsImEiOiI3RDdhUi1NIn0.jaEqREZw7QQMRafKPNBdmA'), 
+        stamen = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png')
+        
+        var map = L.map('map', {
+            center: [34.052234, -118.243685],
+            zoom: 13,
+            layers: [stamen]});
+     var baselayers ={
+         "Stamen":stamen,
+         "Streets":streets
+     }
+        L.control.layers(baselayers).addTo(map);
+        
+        //Create locations for geojson
+        var lapddivision="data/lapd-divisions.geojson";
+        var lapdcarareas="data/lapd-basic-car-areas.geojson";
+        
+        //Styles and loads the Hubs
+        $.getJSON(lapdcarareas, function(data) {
+        var Layer = L.geoJson(data, {
+                style:{
+                fillColor:"#ff7f00",
+                color: "#009FFF",
+                weight: 1,
+                opacity: .5,
+                fillOpacity: 0.1
+                },
+        onEachFeature: function (feature, layer) {
+                L.marker([layer.getBounds().getCenter().lat,layer.getBounds().getCenter().lng],{
+                icon: L.divIcon({
+                className: 'text-cararea',   // Set class for CSS styling
+                html: feature.properties.name
+                })
+        }).addTo(map);
+        }
+        }).addTo(map);
+        });
+        
+        $.getJSON(lapddivision, function(data) {
+        var Layer = L.geoJson(data, {
+                style:{
+                clickable: false,
+                fill:false,
+                color: "#009FFF",
+                weight: 3,
+                opacity: 1,
+                },
+        onEachFeature: function (feature, layer) {
+        L.marker([layer.getBounds().getCenter().lat,layer.getBounds().getCenter().lng],{
+                icon: L.divIcon({
+                className: 'text-labels',   // Set class for CSS styling
+                html: feature.properties.name+" Division"
+                })
+        }).addTo(map);
+        }
+        }).addTo(map);
+        });        
+
+
+        
+        /*Styles and loads the landmarks
+
+        $.getJSON(landmarks, function(data) {
+        var landmarksLayer = L.geoJson(data, {
+            style:{
+                fillColor:"#ff7f00",
+                color: "#000",
+                weight: 0,
+                opacity: 0,
+                fillOpacity: 0.8
+                },
+            pointToLayer: function(feature, latlon) {
+            return L.circleMarker(latlon, 5).bindPopup("<h2>"+feature.properties.Landmarks+"</h2>"+feature.properties.Info);
+            }
+        }).addTo(map);
+        });*/
+        
+	</script>
+</body>
+</html>
