@@ -22,7 +22,7 @@
         var lapdareamarkers= L.layerGroup();
         
         //Code to parse LAPD Contact List to array 
-        var csvload="/data/lapdcontactlist.csv";
+        var csvload="data/lapdcontactlist.csv";
         
         Papa.parse(csvload, {
             header: true,
