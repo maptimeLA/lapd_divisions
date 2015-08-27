@@ -6,7 +6,7 @@ A recent [tweet](https://twitter.com/EmpowerLA/status/636701041803833344) by [Em
 
 As a way to help the public, LAPD and EmpowerLA, a web map will be made to help link residents to the officers in charge of bringing safety to their neighborhood.
 
-All this map should do is allow residents to search for the senior lead officer of their neighborhood.
+All this map should do is allow residents to search for the senior lead officer of their neighborhood, as this could serve as a template and tutorial using csv data with [Papa Parse : An in-browser CSV parser](http://papaparse.com/) and [leaflet : An open-source javascript library for making web maps](http://leafletjs.com/).
 
 **Current Project Status:** Data research, data cleaning/formatting, adding data to [Working Webmap](http://maptimela.github.io/lapd_divisions/)
 
