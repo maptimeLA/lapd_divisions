@@ -1,7 +1,7 @@
 //Code to add Basemaps
         var mapboxtoken= 'pk.eyJ1IjoiY3J1emluNzN2dyIsImEiOiI3RDdhUi1NIn0.jaEqREZw7QQMRafKPNBdmA' //Token to use mapbox services, please change with yours if forking
         var streets =  L.tileLayer('https://{s}.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token='+mapboxtoken); 
-        var stamen = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'); //Adds stamen toner-lite layer
+        var stamen = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png').setOpacity(.5); //Adds stamen toner-lite layer
         
         //Code to make map with starting location and basemaps
         var map = L.map('map', {
@@ -93,8 +93,8 @@
 
         var areaStyle = {
             color: '#FFF', 
-            weight: 3,
-            opacity: 0.6,
+            weight: 1,
+            opacity: 1,
             fillOpacity: 0.3,
             fillColor: '#014982'
         };
@@ -114,7 +114,7 @@
             clickable: false,
             fill:false,
             color: "#014982",
-            weight: 4,
+            weight: 3,
             opacity: 1,
             },
             onEachFeature: function (feature, layer) {

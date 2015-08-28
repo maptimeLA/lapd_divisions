@@ -14,12 +14,24 @@ body { margin: 0; padding: 0;}
         padding: 10px 25px 25px;
         width: 20%;
 }
+
 .text-labels {
     pointer-events: none;
     font-size: 3em;
     font-weight: 700;
     color: white;
             /* Use color, background, set margins for offset, etc */
+        }
+
+.z12 .text-labels {
+    pointer-events: none;
+    font-size: 1em;
+    font-weight: 700;
+    color: white;
+        }
+
+.z12 .text-labels,.z11 .text-labels,.z10 .text-labels {
+    display:none;
         }
 
 .text-cararea {
